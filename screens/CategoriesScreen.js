@@ -25,7 +25,12 @@ const CategoriesScreen = props => {
           <Button
             title="Show"
             onPress={() => {
-              props.navigation.navigate({ routeName: "Recipes" });
+              props.navigation.navigate({
+                routeName: "Recipes",
+                params: {
+                  categoryId: itemData.item.id
+                }
+              });
             }}
           />
         </View>
