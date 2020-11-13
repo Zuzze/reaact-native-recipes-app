@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 const FavoritesScreen = props => {
   return (
     <View style={styles.screen}>
-      <Text>Categories</Text>
+      <Text>Favorites</Text>
     </View>
   );
 };

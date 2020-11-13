@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 const RecipeDetailsScreen = props => {
   return (
     <View style={styles.screen}>
-      <Text>Categories</Text>
+      <Text>Recipe</Text>
     </View>
   );
 };

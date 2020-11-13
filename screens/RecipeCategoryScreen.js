@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Button } from "react-native";
 import PropTypes from "prop-types";
 
 /**
@@ -9,7 +9,13 @@ import PropTypes from "prop-types";
 const RecipeCategoryScreen = props => {
   return (
     <View style={styles.screen}>
-      <Text>Categories</Text>
+      <Text>Recipes inside category</Text>
+      <Button
+        title="show recipe"
+        onPress={() => {
+          props.navigation.navigate({ routeName: "Recipe" });
+        }}
+      />
     </View>
   );
 };

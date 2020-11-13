@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 const FiltersScreen = props => {
   return (
     <View style={styles.screen}>
-      <Text>Categories</Text>
+      <Text>Filters</Text>
     </View>
   );
 };
