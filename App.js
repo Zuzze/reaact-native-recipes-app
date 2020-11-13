@@ -3,8 +3,13 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
+import { enableScreens } from "react-native-screens";
 
 import RecipesNavigator from "./navigation/RecipesNavigator";
+
+// enableScreens is a tool to improve performance using native Fragment (android) and UIViewController (iOS) screens
+// https://github.com/software-mansion/react-native-screens
+enableScreens();
 
 const fetchFonts = () => {
   Font.loadAsync({

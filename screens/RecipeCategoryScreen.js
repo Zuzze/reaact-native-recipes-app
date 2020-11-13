@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
 import PropTypes from "prop-types";
 import { CATEGORIES } from "../data/mock-data";
+
 /**
  * Screen to display all recipes in a specific category
  * @param {*} props
@@ -22,6 +23,15 @@ const RecipeCategoryScreen = props => {
       />
     </View>
   );
+};
+
+// navigatinOptions can be also dymanic if you use function
+RecipeCategoryScreen.navigationOptions = navigationData => {
+  const categoryId = navigationData.navigation.getParam("categoryId");
+  const selectedCategory = CATEGORIES.find(c => c.id === categoryId);
+  return {
+    headerTitle: selectedCategory.title
+  };
 };
 
 RecipeCategoryScreen.propTypes = {};

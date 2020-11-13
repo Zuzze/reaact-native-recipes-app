@@ -9,8 +9,6 @@ import {
 } from "react-native";
 import PropTypes from "prop-types";
 import { CATEGORIES } from "../data/mock-data";
-import Theme from "../constants/theme";
-import { Platform } from "@unimodules/core";
 
 /**
  * Screen to display recipe categories
@@ -54,11 +52,7 @@ CategoriesScreen.defaultProps = {};
 
 CategoriesScreen.navigationOptions = {
   // see header style documentation at https://reactnavigation.org/docs/headers/
-  headerTitle: "Categories",
-  headerStyle: {
-    backgroundColor: Platform.OS === "android" ? Theme.header : Theme.background
-  },
-  headerTintColor: Theme.headerText
+  headerTitle: "Categories"
 };
 
 const styles = StyleSheet.create({
