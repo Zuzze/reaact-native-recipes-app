@@ -1,14 +1,8 @@
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  Button,
-  FlatList,
-  TouchableOpacity
-} from "react-native";
+import { StyleSheet, FlatList } from "react-native";
 import PropTypes from "prop-types";
 import { CATEGORIES } from "../data/mock-data";
+import CategoryGridTile from "../components/CategoryGridTile";
 
 /**
  * Screen to display recipe categories
@@ -17,22 +11,18 @@ import { CATEGORIES } from "../data/mock-data";
 const CategoriesScreen = props => {
   const renderGridItem = itemData => {
     return (
-      <TouchableOpacity style={styles.gridItem}>
-        <View>
-          <Text>{itemData.item.title}</Text>
-          <Button
-            title="Show"
-            onPress={() => {
-              props.navigation.navigate({
-                routeName: "Recipes",
-                params: {
-                  categoryId: itemData.item.id
-                }
-              });
-            }}
-          />
-        </View>
-      </TouchableOpacity>
+      <CategoryGridTile
+        title={itemData.item.title}
+        color={itemData.item.color}
+        onSelect={() => {
+          props.navigation.navigate({
+            routeName: "Recipes",
+            params: {
+              categoryId: itemData.item.id
+            }
+          });
+        }}
+      />
     );
   };
 
@@ -60,11 +50,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center"
-  },
-  gridItem: {
-    margin: 15,
-    flex: 1,
-    height: 150
   }
 });
 

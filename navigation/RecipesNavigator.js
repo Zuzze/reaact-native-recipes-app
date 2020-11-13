@@ -6,13 +6,13 @@
  */
 import { createStackNavigator } from "react-navigation-stack";
 import { createAppContainer } from "react-navigation";
+import { Platform } from "react-native";
 
 import CategoriesScreen from "../screens/CategoriesScreen";
 import RecipeCategoryScreen from "../screens/RecipeCategoryScreen";
 import RecipeDetailsScreen from "../screens/RecipeDetailsScreen";
 
 import Theme from "../constants/theme";
-import { Platform } from "@unimodules/core";
 
 // Stack Navigator is a "stack" of screens that you can go back by pressing back button on top
 const RecipesNavigator = createStackNavigator(
@@ -22,8 +22,8 @@ const RecipesNavigator = createStackNavigator(
     Recipe: { screen: RecipeDetailsScreen, navigationOptions: {} }
   },
   {
-    initialRouteName: "Categories", // first pair is default
-    mode: "card", // modal, card (default)
+    // initialRouteName: "Categories", // first pair is default
+    // mode: "modal", // card (default)
     defaultNavigationOptions: {
       // set up global nav style here
       headerStyle: {
