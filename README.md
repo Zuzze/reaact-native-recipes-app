@@ -23,7 +23,7 @@ expo install react-native-gesture-handler react-native-reanimated react-native-s
 ```
 
 ```
-yarn add react-navigation-stack react-navigation-tabs react-navigation-drawer react-navigation-header-buttons
+yarn add react-navigation-stack react-navigation-tabs react-navigation-drawer react-navigation-header-buttons react-navigation-material-bottom-tabs react-native-paper
 
 ```
 

@@ -9,6 +9,7 @@ import { createBottomTabNavigator } from "react-navigation-tabs";
 import { createAppContainer } from "react-navigation";
 import { Platform } from "react-native";
 import React from "react";
+import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 
 import CategoriesScreen from "../screens/CategoriesScreen";
 import CategoryScreen from "../screens/CategoryScreen";
@@ -40,42 +41,50 @@ const Navigator = createStackNavigator(
   }
 );
 
-const TabNavigator = createBottomTabNavigator(
-  {
-    Categories: {
-      tabBarLabel: "Explore",
-      screen: Navigator,
-      navigationOptions: {
-        tabBarIcon: tabInfo => {
-          return (
-            <Ionicons
-              name="ios-restaurant"
-              size={25}
-              color={tabInfo.tintColor}
-            />
-          );
-        }
-      }
-    },
-    Favorites: {
-      tabBarLabel: "Favorites",
-      screen: FavoritesScreen,
-      navigationOptions: {
-        tabBarIcon: tabInfo => {
-          return (
-            <Ionicons name="ios-star" size={25} color={tabInfo.tintColor} />
-          );
-        }
-      }
+const bottomTabConfig = {
+  Categories: {
+    tabBarLabel: "Explore",
+
+    screen: Navigator,
+    navigationOptions: {
+      tabBarIcon: tabInfo => {
+        return (
+          <Ionicons name="ios-restaurant" size={25} color={tabInfo.tintColor} />
+        );
+      },
+      tabBarColor: Theme.primary // android
     }
   },
-  {
-    tabBarOptions: {
-      activeTintColor: Theme.primary,
-      inactiveTintColor: Theme.fontColor
+  Favorites: {
+    tabBarLabel: "Favorites",
+    screen: FavoritesScreen,
+    navigationOptions: {
+      tabBarIcon: tabInfo => {
+        return <Ionicons name="ios-star" size={25} color={tabInfo.tintColor} />;
+      },
+      tabBarColor: Theme.primary // android
     }
   }
-);
+};
+
+// To create native like style for android, use Material style
+
+const TabNavigator =
+  Platform.OS === "android"
+    ? createMaterialBottomTabNavigator(bottomTabConfig, {
+        activeTintColor: Theme.headerText,
+        shifting: true // animated effect for android transition
+        /* If you don't want animation, use this to change tab bg color
+        barStyle: {
+          backgroundColor: Theme.primary
+        }*/
+      })
+    : createBottomTabNavigator(bottomTabConfig, {
+        tabBarOptions: {
+          activeTintColor: Theme.primary,
+          inactiveTintColor: Theme.fontColor
+        }
+      });
 
 // Note that basic export is not enough, you need createAppContainer
 // App has a root navigator (where app starts) but you can nest new navigators inside the root navigator
