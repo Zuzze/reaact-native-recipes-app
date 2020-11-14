@@ -5,7 +5,7 @@ import * as Font from "expo-font";
 import { AppLoading } from "expo";
 // import { enableScreens } from "react-native-screens";
 
-import RecipesNavigator from "./navigation/RecipesNavigator";
+import Navigator from "./navigation/Navigator";
 
 // enableScreens is a tool to improve performance using native Fragment (android) and UIViewController (iOS) screens
 // https://github.com/software-mansion/react-native-screens
@@ -31,7 +31,7 @@ export default function App() {
     );
   }
 
-  return <RecipesNavigator />;
+  return <Navigator />;
 }
 
 const styles = StyleSheet.create({});

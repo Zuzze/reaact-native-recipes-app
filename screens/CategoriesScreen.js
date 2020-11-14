@@ -1,8 +1,9 @@
 import React from "react";
-import { StyleSheet, FlatList } from "react-native";
+import { StyleSheet, View, FlatList } from "react-native";
 import PropTypes from "prop-types";
 import { CATEGORIES } from "../data/mock-data";
 import CategoryGridTile from "../components/CategoryGridTile";
+import Theme from "../constants/theme";
 
 /**
  * Screen to display recipe categories
@@ -27,12 +28,15 @@ const CategoriesScreen = props => {
   };
 
   return (
-    <FlatList
-      keyExtractor={item => item.id}
-      numColumns={2}
-      data={CATEGORIES}
-      renderItem={renderGridItem}
-    />
+    <View style={styles.screen}>
+      <FlatList
+        style={styles.list}
+        keyExtractor={item => item.id}
+        numColumns={2}
+        data={CATEGORIES}
+        renderItem={renderGridItem}
+      />
+    </View>
   );
 };
 
@@ -47,9 +51,10 @@ CategoriesScreen.navigationOptions = {
 
 const styles = StyleSheet.create({
   screen: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
+    backgroundColor: Theme.background
+  },
+  list: {
+    padding: 10
   }
 });
 

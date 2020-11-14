@@ -15,7 +15,7 @@ import ItemScreen from "../screens/ItemScreen";
 import Theme from "../constants/theme";
 
 // Stack Navigator is a "stack" of screens that you can go back by pressing back button on top
-const RecipesNavigator = createStackNavigator(
+const Navigator = createStackNavigator(
   {
     Categories: CategoriesScreen,
     Recipes: CategoryScreen,
@@ -36,4 +36,4 @@ const RecipesNavigator = createStackNavigator(
 );
 
 // Note that basic export is not enough, you need createAppContainer
-export default createAppContainer(RecipesNavigator);
+export default createAppContainer(Navigator);

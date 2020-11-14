@@ -5,10 +5,13 @@ const waterMelonSugarTheme = {
   danger: "#ffcdc8",
   success: "#e7ffea",
   shadow: "gray",
+  light: "white",
+  dark: "#222222",
 
   header: "#ff7676",
   headerText: "white",
-  background: "#e7ffea",
+  background: "#FFF9F0",
+
   input: "white",
   card: "white",
   cardBorderRadius: 20,
@@ -19,7 +22,8 @@ const waterMelonSugarTheme = {
 
   titleFontFamily: "open-sans-bold",
   fontFamily: "open-sans-regular",
-  titleFontColor: "gray"
+  titleFontColor: "gray",
+  fontColor: "gray"
 };
 
 // selected theme

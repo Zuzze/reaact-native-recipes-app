@@ -1,25 +1,45 @@
 import React from "react";
-import { View, Text, StyleSheet, Button } from "react-native";
+import { View, StyleSheet, Text, FlatList } from "react-native";
 import PropTypes from "prop-types";
-import { CATEGORIES } from "../data/mock-data";
+import { CATEGORIES, ITEMS } from "../data/mock-data";
+import ItemTile from "../components/ItemTile";
+import Theme from "../constants/theme";
 
 /**
  * Screen to display all recipes in a specific category
  * @param {*} props
  */
 const CategoryScreen = props => {
+  const renderItem = itemData => {
+    return (
+      <ItemTile
+        title={itemData.item.title}
+        image={itemData.item.imageUrl}
+        duration={itemData.item.duration}
+        complexity={itemData.item.complexity}
+        affordability={itemData.item.affordability}
+        onSelectMeal={() => {
+          props.navigation.navigate({
+            routeName: "Recipe",
+            params: { item: itemData }
+          });
+        }}
+      />
+    );
+  };
+
   const categoryId = props.navigation.getParam("categoryId");
   const selectedCategory = CATEGORIES.find(c => c.id === categoryId);
+  const categoryItems = ITEMS.filter(
+    item => item.categoryIds.indexOf(selectedCategory.id) >= 0
+  );
 
   return (
     <View style={styles.screen}>
-      <Text>{selectedCategory.title}</Text>
-      <Text>Recipes inside category</Text>
-      <Button
-        title="show recipe"
-        onPress={() => {
-          props.navigation.navigate({ routeName: "Recipe" });
-        }}
+      <FlatList
+        data={categoryItems}
+        keyExtractor={(item, index) => item.id}
+        renderItem={renderItem}
       />
     </View>
   );
@@ -40,9 +60,11 @@ CategoryScreen.defaultProps = {};
 
 const styles = StyleSheet.create({
   screen: {
+    backgroundColor: Theme.background,
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    padding: 15
   }
 });
 

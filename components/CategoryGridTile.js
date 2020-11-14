@@ -5,7 +5,8 @@ import {
   StyleSheet,
   TouchableOpacity,
   TouchableNativeFeedback,
-  Platform
+  Platform,
+  Image
 } from "react-native";
 import PropTypes from "prop-types";
 import Theme from "../constants/theme";
@@ -24,8 +25,12 @@ const CategoryGridTile = props => {
   return (
     <View style={styles.gridItem}>
       <TouchableTile style={{ flex: 1 }} onPress={props.onSelect}>
-        <View style={{ ...styles.tile, ...{ backgroundColor: props.color } }}>
-          <Text style={styles.title}>{props.title}</Text>
+        <View style={{ ...styles.tile, ...{ backgroundColor: Theme.accent } }}>
+          <Image
+            style={styles.gridImage}
+            source={require("../assets/img/plate_watermelon.png")}
+          />
+          <Text style={styles.gridTitle}>{props.title}</Text>
         </View>
       </TouchableTile>
     </View>
@@ -53,15 +58,20 @@ const styles = StyleSheet.create({
     padding: 15
   },
   gridItem: {
-    margin: 15,
+    margin: 10,
     flex: 1,
     height: 150,
     overflow: "hidden",
+    textAlign: "center",
     borderRadius: Theme.borderRadius
   },
-  title: {
+  gridImage: {
+    width: "70%"
+  },
+  gridTitle: {
     fontFamily: Theme.titleFontFamily,
-    fontSize: 22,
+    color: Theme.fontColor,
+    fontSize: 20,
     textAlign: "right"
   }
 });
