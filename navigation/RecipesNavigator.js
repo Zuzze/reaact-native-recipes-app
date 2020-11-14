@@ -9,8 +9,8 @@ import { createAppContainer } from "react-navigation";
 import { Platform } from "react-native";
 
 import CategoriesScreen from "../screens/CategoriesScreen";
-import RecipeCategoryScreen from "../screens/RecipeCategoryScreen";
-import RecipeDetailsScreen from "../screens/RecipeDetailsScreen";
+import CategoryScreen from "../screens/CategoryScreen";
+import ItemScreen from "../screens/ItemScreen";
 
 import Theme from "../constants/theme";
 
@@ -18,8 +18,8 @@ import Theme from "../constants/theme";
 const RecipesNavigator = createStackNavigator(
   {
     Categories: CategoriesScreen,
-    Recipes: RecipeCategoryScreen,
-    Recipe: { screen: RecipeDetailsScreen, navigationOptions: {} }
+    Recipes: CategoryScreen,
+    Recipe: { screen: ItemScreen, navigationOptions: {} }
   },
   {
     // initialRouteName: "Categories", // first pair is default

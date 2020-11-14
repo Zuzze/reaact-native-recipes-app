@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
  * Single recipe screen
  * @param {*} props
  */
-const RecipeDetailsScreen = props => {
+const ItemScreen = props => {
   return (
     <View style={styles.screen}>
       <Text>Recipe</Text>
@@ -14,9 +14,9 @@ const RecipeDetailsScreen = props => {
   );
 };
 
-RecipeDetailsScreen.propTypes = {};
+ItemScreen.propTypes = {};
 
-RecipeDetailsScreen.defaultProps = {};
+ItemScreen.defaultProps = {};
 
 const styles = StyleSheet.create({
   screen: {
@@ -26,4 +26,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default RecipeDetailsScreen;
+export default ItemScreen;

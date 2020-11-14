@@ -7,7 +7,7 @@ import { CATEGORIES } from "../data/mock-data";
  * Screen to display all recipes in a specific category
  * @param {*} props
  */
-const RecipeCategoryScreen = props => {
+const CategoryScreen = props => {
   const categoryId = props.navigation.getParam("categoryId");
   const selectedCategory = CATEGORIES.find(c => c.id === categoryId);
 
@@ -26,7 +26,7 @@ const RecipeCategoryScreen = props => {
 };
 
 // navigatinOptions can be also dymanic if you use function
-RecipeCategoryScreen.navigationOptions = navigationData => {
+CategoryScreen.navigationOptions = navigationData => {
   const categoryId = navigationData.navigation.getParam("categoryId");
   const selectedCategory = CATEGORIES.find(c => c.id === categoryId);
   return {
@@ -34,9 +34,9 @@ RecipeCategoryScreen.navigationOptions = navigationData => {
   };
 };
 
-RecipeCategoryScreen.propTypes = {};
+CategoryScreen.propTypes = {};
 
-RecipeCategoryScreen.defaultProps = {};
+CategoryScreen.defaultProps = {};
 
 const styles = StyleSheet.create({
   screen: {
@@ -46,4 +46,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default RecipeCategoryScreen;
+export default CategoryScreen;
