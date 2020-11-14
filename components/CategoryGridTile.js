@@ -55,13 +55,21 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-end",
     alignItems: "flex-end",
-    padding: 15
+    padding: 15,
+    overflow:
+      Platform.OS === "android" && Platform.version >= 21
+        ? "hidden"
+        : "visible",
+    elevation: 5
   },
   gridItem: {
     margin: 10,
     flex: 1,
     height: 150,
-    overflow: "hidden",
+    shadowColor: Theme.shadow,
+    shadowOpacity: 0.26,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 2 },
     textAlign: "center",
     borderRadius: Theme.borderRadius
   },

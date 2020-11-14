@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import PropTypes from "prop-types";
+import Theme from "../constants/theme";
 
 /**
  * Screen to display all reecipes that have been marked as favorites
