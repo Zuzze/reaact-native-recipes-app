@@ -3,6 +3,8 @@ import { View, Text, StyleSheet } from "react-native";
 import PropTypes from "prop-types";
 import { ITEMS } from "../data/mock-data";
 import Theme from "../constants/theme";
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import HeaderButton from "../components/HeaderButton";
 
 /**
  * Single recipe screen
@@ -22,7 +24,16 @@ ItemScreen.navigationOptions = navigationData => {
   const ItemId = navigationData.navigation.getParam("id");
   const selectedItem = ITEMS.find(item => item.id === ItemId);
   return {
-    headerTitle: selectedItem.title
+    headerTitle: selectedItem.title,
+    headerRight: () => (
+      <HeaderButtons HeaderButtonComponent={HeaderButton}>
+        <Item
+          title="Favorite"
+          iconName="ios-star"
+          onPress={() => console.log("fav")}
+        />
+      </HeaderButtons>
+    )
   };
 };
 
