@@ -20,6 +20,16 @@ import FavoritesScreen from "../screens/FavoritesScreen";
 import Theme from "../constants/theme";
 import { Ionicons } from "@expo/vector-icons";
 
+const defaultStackNavOptions = {
+  // initialRouteName: "Categories", // first pair is default
+  // mode: "modal", // card (default)
+  // set up global nav style here
+  headerStyle: {
+    backgroundColor: Platform.OS === "android" ? Theme.header : Theme.background
+  },
+  headerTintColor: Theme.headerText
+};
+
 // Stack Navigator is a "stack" of screens that you can go back by pressing back button on top
 const Navigator = createStackNavigator(
   {
@@ -27,18 +37,15 @@ const Navigator = createStackNavigator(
     Recipes: CategoryScreen,
     Recipe: { screen: ItemScreen, navigationOptions: {} }
   },
+  { defaultStackNavigationOptions: defaultStackNavOptions }
+);
+
+const FavoritesNavigator = createStackNavigator(
   {
-    // initialRouteName: "Categories", // first pair is default
-    // mode: "modal", // card (default)
-    defaultNavigationOptions: {
-      // set up global nav style here
-      headerStyle: {
-        backgroundColor:
-          Platform.OS === "android" ? Theme.header : Theme.background
-      },
-      headerTintColor: Theme.headerText
-    }
-  }
+    Favorites: FavoritesScreen,
+    Items: ItemScreen
+  },
+  { defaultStackNavigationOptions: defaultStackNavOptions }
 );
 
 const bottomTabConfig = {
@@ -57,7 +64,7 @@ const bottomTabConfig = {
   },
   Favorites: {
     tabBarLabel: "Favorites",
-    screen: FavoritesScreen,
+    screen: FavoritesNavigator,
     navigationOptions: {
       tabBarIcon: tabInfo => {
         return <Ionicons name="ios-star" size={25} color={tabInfo.tintColor} />;

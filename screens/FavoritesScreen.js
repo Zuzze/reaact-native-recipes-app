@@ -1,31 +1,27 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
 import PropTypes from "prop-types";
-import Theme from "../constants/theme";
+import ItemTileList from "../components/ItemTileList";
+import { ITEMS } from "../data/mock-data";
 
 /**
  * Screen to display all reecipes that have been marked as favorites
  * @param {*} props
  */
 const FavoritesScreen = props => {
-  return (
-    <View style={styles.screen}>
-      <Text>Favorites</Text>
-    </View>
+  const favoriteMeals = ITEMS.filter(
+    item => item.id === "m1" || item.id === "m2"
   );
+  return (
+    <ItemTileList listData={favoriteMeals} navigation={props.navigation} />
+  );
+};
+
+FavoritesScreen.navigationOptions = {
+  headerTitle: "Your favorites"
 };
 
 FavoritesScreen.propTypes = {};
 
 FavoritesScreen.defaultProps = {};
-
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: Theme.background
-  }
-});
 
 export default FavoritesScreen;
