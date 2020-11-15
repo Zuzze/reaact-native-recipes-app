@@ -176,6 +176,7 @@ const styles = StyleSheet.create({
     paddingTop: 10
   },
   image: {
+    marginTop: 30,
     height: 400
   },
   details: {
@@ -186,7 +187,8 @@ const styles = StyleSheet.create({
   title: {
     marginVertical: 10,
     fontSize: 22,
-    textAlign: "center"
+    textAlign: "center",
+    color: Theme.titleFontColorDark
   },
   listItem: {
     marginVertical: 5,

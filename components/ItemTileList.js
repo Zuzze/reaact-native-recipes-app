@@ -18,7 +18,7 @@ const ItemTileList = props => {
         duration={itemData.item.duration}
         complexity={itemData.item.complexity}
         affordability={itemData.item.affordability}
-        onSelectMeal={() => {
+        onSelect={() => {
           props.navigation.navigate({
             routeName: "Recipe",
             params: {
@@ -32,11 +32,10 @@ const ItemTileList = props => {
   };
 
   return (
-    <View style={Theme.screen}>
+    <View style={styles.screen}>
       <FlatList
         data={props.listData}
-        style={styles.list}
-        contentContainerStyle={{ paddingBottom: 20, paddingTop: 130 }}
+        contentContainerStyle={{ paddingBottom: 20, paddingTop: 100 }}
         keyExtractor={(item, index) => item.id}
         renderItem={renderItem}
       />
@@ -44,6 +43,14 @@ const ItemTileList = props => {
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  screen: {
+    ...Theme.screen,
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 15
+  }
+});
 
 export default ItemTileList;

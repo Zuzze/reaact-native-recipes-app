@@ -3,56 +3,88 @@ import {
   View,
   StyleSheet,
   TouchableOpacity,
-  ImageBackground
+  TouchableNativeFeedback,
+  ImageBackground,
+  Platform
 } from "react-native";
 import Theme from "../constants/theme";
 import ThemeText from "./ThemeText";
 import ThemeTitleText from "./ThemeTitleText";
+import PropTypes from "prop-types";
+import { Ionicons } from "@expo/vector-icons";
 
 /** A tile to display a preview of a single item */
 const ItemTile = props => {
+  let TouchableTile = TouchableOpacity;
+
+  // note that Version is with capital V
+  if (Platform.OS === "android" && Platform.Version >= 21) {
+    TouchableTile = TouchableNativeFeedback;
+  }
+
   return (
     <View style={styles.item}>
-      <TouchableOpacity onPress={props.onSelectMeal}>
+      <TouchableTile
+        onPress={props.onSelect}
+        background={TouchableNativeFeedback.Ripple(Theme.shadow, true)}
+      >
         <View>
-          <View style={{ ...styles.itemRow, ...styles.itemHeader }}>
+          <View>
             <ImageBackground
               source={{ uri: props.image }}
               style={styles.bgImage}
             >
-              <View style={styles.titleContainer}>
-                <ThemeTitleText style={styles.title} numberOfLines={1}>
-                  {props.title}
-                </ThemeTitleText>
+              <View style={styles.itemTextContainer}>
+                <View style={{ ...styles.itemRow, ...styles.itemHeader }}>
+                  <ThemeTitleText style={styles.title}>
+                    {props.title}
+                  </ThemeTitleText>
+                </View>
+                <View style={{ ...styles.itemRow, ...styles.itemFooter }}>
+                  <ThemeText style={styles.itemFooterText}>
+                    <Ionicons
+                      name="md-stopwatch"
+                      style={styles.icon}
+                      size={16}
+                    />{" "}
+                    {props.duration} min
+                  </ThemeText>
+                  <ThemeText style={styles.itemFooterText}>
+                    <Ionicons name="md-podium" style={styles.icon} size={16} />{" "}
+                    {props.complexity}
+                  </ThemeText>
+                  <ThemeText style={styles.itemFooterText}>
+                    <Ionicons name="md-cash" style={styles.icon} size={16} />{" "}
+                    {props.affordability}
+                  </ThemeText>
+                </View>
               </View>
             </ImageBackground>
           </View>
-          <View style={{ ...styles.itemRow, ...styles.itemFooter }}>
-            <ThemeText style={styles.itemFooterText}>
-              {props.duration}m
-            </ThemeText>
-            <ThemeText style={styles.itemFooterText}>
-              {props.complexity.toUpperCase()}
-            </ThemeText>
-            <ThemeText style={styles.itemFooterText}>
-              {props.affordability.toUpperCase()}
-            </ThemeText>
-          </View>
         </View>
-      </TouchableOpacity>
+      </TouchableTile>
     </View>
   );
 };
 
+ItemTile.propTypes = {
+  onSelect: PropTypes.func,
+  image: PropTypes.string,
+  title: PropTypes.string,
+  duration: PropTypes.number,
+  complexity: PropTypes.string,
+  affordability: PropTypes.string
+};
+
 const styles = StyleSheet.create({
   item: {
-    height: 200,
-    width: "100%",
+    flex: 1,
+    minWidth: "100%",
+    height: 250,
     backgroundColor: "#f5f5f5",
-    borderRadius: Theme.borderRadius,
+    borderRadius: 10,
     overflow: "hidden",
-    marginBottom: 20,
-    ...Theme.shadow
+    marginVertical: 10
   },
   bgImage: {
     width: "100%",
@@ -63,27 +95,32 @@ const styles = StyleSheet.create({
     flexDirection: "row"
   },
   itemHeader: {
-    height: "85%"
+    paddingVertical: 10
   },
   itemFooter: {
-    paddingHorizontal: 10,
     justifyContent: "space-between",
     alignItems: "center",
     height: "15%",
-    backgroundColor: "rgba(255,255,255,0.8)"
+    color: "white",
+    alignItems: "center"
+    // backgroundColor: "rgba(255,255,255,0.8)"
   },
   itemFooterText: {
-    color: Theme.fontColor
+    color: Theme.light,
+    marginTop: 10
   },
-  titleContainer: {
-    backgroundColor: "rgba(255,255,255,0.8)",
-    paddingVertical: 5,
+  itemTextContainer: {
+    backgroundColor: "rgba(0,0,0,0.6)",
+    paddingVertical: 0,
     paddingHorizontal: 12
+  },
+  icon: {
+    paddingRight: 10
   },
   title: {
     fontFamily: Theme.titleFontFamily,
-    fontSize: 20,
-    color: Theme.fontColor,
+    fontSize: 18,
+    color: Theme.light,
     textAlign: "center"
   }
 });

@@ -44,6 +44,7 @@ const waterMelonSugarTheme = {
   titleFontFamily: "montserrat-bold",
   titleFontSize: 20,
   titleFontColor: "#fffbf5", //"#333333",
+  titleFontColorDark: "#333333",
 
   fontFamily: "montserrat",
   fontSize: 16,
