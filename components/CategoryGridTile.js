@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   TouchableNativeFeedback,
   Platform,
-  Image
+  ImageBackground
 } from "react-native";
 import PropTypes from "prop-types";
 import Theme from "../constants/theme";
@@ -27,18 +27,20 @@ const CategoryGridTile = props => {
   return (
     <View style={styles.gridItem}>
       <TouchableTile
-        style={{ flex: 1 }}
         onPress={props.onSelect}
         background={TouchableNativeFeedback.Ripple(Theme.shadow, true)}
       >
         <View style={styles.tile}>
-          <Image
-            style={styles.gridImage}
-            source={require("../assets/img/plate_watermelon.png")}
-          />
-          <ThemeTitleText style={styles.gridTitle}>
-            {props.title}
-          </ThemeTitleText>
+          <ImageBackground
+            source={{ uri: props.coverImage }}
+            style={styles.bgImage}
+          >
+            <View style={styles.gridTitleContainer}>
+              <ThemeTitleText style={styles.gridTitle} numberOfLines={1}>
+                {props.title}
+              </ThemeTitleText>
+            </View>
+          </ImageBackground>
         </View>
       </TouchableTile>
     </View>
@@ -48,7 +50,8 @@ const CategoryGridTile = props => {
 CategoryGridTile.propTypes = {
   onSelect: PropTypes.func,
   color: PropTypes.string,
-  title: PropTypes.string
+  title: PropTypes.string,
+  coverImage: PropTypes.string
 };
 
 CategoryGridTile.defaultProps = {
@@ -61,10 +64,12 @@ const styles = StyleSheet.create({
   tile: {
     backgroundColor: Theme.card,
     borderRadius: Theme.cardBorderRadius,
-    flex: 1,
+
+    height: "100%",
+    width: "100%",
     justifyContent: "flex-end",
-    alignItems: "flex-end",
-    padding: 15,
+
+    padding: 0,
     overflow:
       Platform.OS === "android" && Platform.Version >= 21 ? "hidden" : "visible"
   },
@@ -76,12 +81,18 @@ const styles = StyleSheet.create({
     textAlign: "center",
     borderRadius: Theme.cardBorderRadius
   },
-  gridImage: {
-    width: "70%"
+  bgImage: {
+    width: "100%",
+    height: "100%",
+    justifyContent: "flex-end"
+  },
+  gridTitleContainer: {
+    backgroundColor: "rgba(255, 255, 255, 0.7)"
   },
   gridTitle: {
     textAlign: "right",
-    fontSize: 16
+    fontSize: 16,
+    marginRight: 20
   }
 });
 

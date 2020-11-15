@@ -7,7 +7,7 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 
 // comment out in Production!!
-import { composeWithDevTools } from "redux-devtools-extension";
+// import { composeWithDevTools } from "redux-devtools-extension";
 
 // import { enableScreens } from "react-native-screens";
 
@@ -24,11 +24,11 @@ const rootReducer = combineReducers({
 });
 
 let store = createStore(rootReducer);
-if (__DEV__) {
+/*if (__DEV__) {
   //  dev
   console.log("Development mode active");
   store = createStore(rootReducer, composeWithDevTools());
-}
+}*/
 const fetchFonts = () => {
   return Font.loadAsync({
     montserrat: require("./assets/fonts/Montserrat-Regular.ttf"),
