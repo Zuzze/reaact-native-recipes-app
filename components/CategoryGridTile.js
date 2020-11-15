@@ -80,7 +80,8 @@ const styles = StyleSheet.create({
     width: "70%"
   },
   gridTitle: {
-    textAlign: "right"
+    textAlign: "right",
+    fontSize: 16
   }
 });
 

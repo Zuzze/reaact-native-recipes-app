@@ -29,6 +29,9 @@ const FiltersScreen = props => {
   const [isVegan, setIsVegan] = useState(false);
   const [isVegetarian, setIsVegetarian] = useState(false);
 
+  // trigger only when filters [isGlutenFree, isLactoseFree, isVegan, isVegetarian] change
+  // useCallback() often is used in conjunction with useEffect() because it allows you to prevent the re-creation of a function.
+  // By wrapping it around a function declaration and defining the dependencies of the function, it ensures that the function is only re-created if its dependencies changed.
   const saveFilters = useCallback(() => {
     const appliedFilters = {
       glutenFree: isGlutenFree,
@@ -41,6 +44,7 @@ const FiltersScreen = props => {
   }, [isGlutenFree, isLactoseFree, isVegan, isVegetarian]);
 
   // componendtDidUpdate when one of the filters changes
+  // With a dependency array provided, useEffect() will only re-run the function you passed as a first argument, whenever one of the dependencies changed.
   useEffect(() => {
     navigation.setParams({ save: saveFilters });
   }, [saveFilters]);
@@ -88,7 +92,7 @@ FiltersScreen.navigationOptions = navData => {
         />
       </HeaderButtons>
     ),
-    headerRight: (
+    headerRight: () => (
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
         <Item
           title="Save"
@@ -107,7 +111,8 @@ FiltersScreen.defaultProps = {};
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    alignItems: "center"
+    alignItems: "center",
+    backgroundColor: Theme.background
   },
   title: {
     fontFamily: Theme.titleFontFamily,

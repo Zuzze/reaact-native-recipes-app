@@ -47,12 +47,13 @@ const ItemTile = props => {
 
 const styles = StyleSheet.create({
   item: {
-    ...Theme.shadow,
     height: 200,
     width: "100%",
     backgroundColor: "#f5f5f5",
-    borderRadius: 10,
-    marginBottom: 20
+    borderRadius: Theme.borderRadius,
+    overflow: "hidden",
+    marginBottom: 20,
+    ...Theme.shadow
   },
   bgImage: {
     width: "100%",
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     height: "15%",
-    backgroundColor: Theme.light
+    backgroundColor: "rgba(255,255,255,0.8)"
   },
   itemFooterText: {
     color: Theme.fontColor

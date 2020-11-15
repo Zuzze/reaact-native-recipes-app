@@ -8,7 +8,7 @@ import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import { createAppContainer } from "react-navigation";
 import { createDrawerNavigator } from "react-navigation-drawer";
-import { Platform } from "react-native";
+import { Platform, Image, StyleSheet } from "react-native";
 import React from "react";
 import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 
@@ -31,10 +31,20 @@ const defaultStackNavOptions = {
   headerStyle: {
     backgroundColor: Platform.OS === "android" ? Theme.header : Theme.background
   },
+  // headerTransparent: true,
+  /*headerBackground: () => (
+    <Image
+      style={StyleSheet.absoluteFill}
+      source={require("../assets/img/green.png")}
+    />
+  ),*/
+
   headerTintColor: Platform.OS === "android" ? Theme.background : Theme.primary,
+  // Header text
   headerTitleStyle: {
     fontFamily: Theme.titleFontFamily
   },
+  // Back button text
   headerBackTitleStyle: {
     fontFamily: Theme.fontFamily
   },
@@ -114,7 +124,7 @@ const TabNavigator =
         // ios only
         tabBarOptions: {
           labelStyle: {
-            fontFamily: Theme.fontFamily
+            fontFamily: Theme.titleFontFamily
           },
           activeTintColor: Theme.primary,
           inactiveTintColor: Theme.fontColor

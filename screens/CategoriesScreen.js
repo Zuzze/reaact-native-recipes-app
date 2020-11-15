@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, FlatList } from "react-native";
+import { StyleSheet, View, FlatList, Text } from "react-native";
 import PropTypes from "prop-types";
 import { CATEGORIES } from "../data/mock-data";
 import CategoryGridTile from "../components/CategoryGridTile";
@@ -33,6 +33,7 @@ const CategoriesScreen = props => {
     <View style={styles.screen}>
       <FlatList
         style={styles.list}
+        contentContainerStyle={{ paddingBottom: 20 }}
         keyExtractor={item => item.id}
         numColumns={2}
         data={CATEGORIES}

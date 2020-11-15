@@ -1,12 +1,12 @@
 const waterMelonSugarTheme = {
   text: "gray",
-  primary: "#ff7676",
+  primary: "#85BE8C", //"#ff7676",
   accent: "#e7ffea",
   danger: "#ffcdc8",
   success: "#85BE8C",
   shadow: {
     elevation: 5,
-    overflow: "hidden",
+    // overflow: "hidden",
     shadowColor: "gray",
     shadowOpacity: 0.26,
     shadowRadius: 10,
@@ -15,7 +15,7 @@ const waterMelonSugarTheme = {
   light: "white",
   dark: "#222222",
 
-  header: "#ff7676",
+  header: "#85BE8C",
   inactiveColor: "rgba(255, 255, 255, 0.6)",
   headerText: "white",
   background: "#f9f9f9", //#FFF9F0
