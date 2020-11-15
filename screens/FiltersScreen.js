@@ -14,7 +14,7 @@ const FilterSwitch = props => {
     <View style={styles.filterContainer}>
       <ThemeText>{props.label}</ThemeText>
       <Switch
-        trackColor={{ true: Theme.success, false: Theme.danger }}
+        trackColor={{ true: Theme.success, false: Theme.accent }}
         thumbColor={Theme.light}
         value={props.state}
         onValueChange={props.onChange}
@@ -45,6 +45,9 @@ const FiltersScreen = props => {
     };
     dispatch(setFilters(appliedFilters));
     console.log(appliedFilters);
+    props.navigation.navigate({
+      routeName: "Categories"
+    });
   }, [isGlutenFree, isLactoseFree, isVegan, isVegetarian]);
 
   // componendtDidUpdate when one of the filters changes

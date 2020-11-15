@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { View, Text, StyleSheet, ScrollView, Image } from "react-native";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
@@ -8,6 +8,7 @@ import HeaderButton from "../components/HeaderButton";
 import ThemeTitleText from "../components/ThemeTitleText";
 import ThemeText from "../components/ThemeText";
 import { toggleFavorite } from "../store/actions/items";
+import { Button, Snackbar } from "react-native-paper";
 
 const ListItem = props => {
   return (
@@ -22,6 +23,10 @@ const ListItem = props => {
  * @param {*} props
  */
 const ItemScreen = props => {
+  const [isSnackbarVisible, setIsSnackbarVisible] = useState(false);
+
+  const onDismissSnackBar = () => setIsSnackbarVisible(false);
+
   const availableItems = useSelector(state => state.items.items);
   const itemId = props.navigation.getParam("id");
   const isCurrentItemFavorite = useSelector(state =>
@@ -31,6 +36,7 @@ const ItemScreen = props => {
   const dispatch = useDispatch();
 
   const handleToggleFavorite = useCallback(() => {
+    setIsSnackbarVisible(!isSnackbarVisible);
     dispatch(toggleFavorite(itemId));
   }, [dispatch, itemId]);
 
@@ -66,6 +72,33 @@ const ItemScreen = props => {
           ))}
         </View>
       </ScrollView>
+      <Snackbar
+        visible={isSnackbarVisible}
+        theme={{
+          roundness: 20,
+          colors: {
+            accent: Theme.fontColor,
+            surface: Theme.fontColor,
+            onSurface: Theme.accent
+          },
+          fonts: {
+            regular: Theme.fontFamily,
+            medium: Theme.fontFamily
+          }
+        }}
+        duration={5000}
+        onDismiss={onDismissSnackBar}
+        action={{
+          label: "Close",
+          onPress: () => {
+            // Do something
+          }
+        }}
+      >
+        {!isCurrentItemFavorite
+          ? "Recipe removed from favorites"
+          : "Recipe added to favorites"}
+      </Snackbar>
     </View>
   );
 };
@@ -98,7 +131,8 @@ ItemScreen.defaultProps = {};
 
 const styles = StyleSheet.create({
   screen: {
-    flex: 1
+    flex: 1,
+    backgroundColor: Theme.background
   },
   image: {
     width: "100%",

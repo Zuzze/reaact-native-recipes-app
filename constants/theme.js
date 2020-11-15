@@ -1,7 +1,7 @@
 const waterMelonSugarTheme = {
   text: "gray",
   primary: "#85BE8C", //"#ff7676",
-  accent: "#e7ffea",
+  accent: "#F1E6D6", // "#e7ffea",
   danger: "#ffcdc8",
   success: "#85BE8C",
   shadow: {
@@ -30,7 +30,7 @@ const waterMelonSugarTheme = {
 
   titleFontFamily: "montserrat-bold",
   titleFontSize: 20,
-  titleFontColor: "black",
+  titleFontColor: "gray",
 
   fontFamily: "montserrat",
   fontSize: 16,
