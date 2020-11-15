@@ -87,11 +87,12 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end"
   },
   gridTitleContainer: {
-    backgroundColor: "rgba(255, 255, 255, 0.75)",
+    backgroundColor: "rgba(0, 0, 0, 0.4)",
     padding: 5
   },
   gridTitle: {
     textAlign: "right",
+    color: Theme.light,
     fontSize: 16,
     marginRight: 10
   }

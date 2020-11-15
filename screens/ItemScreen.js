@@ -172,11 +172,11 @@ const styles = StyleSheet.create({
     backgroundColor: Theme.card,
     borderTopLeftRadius: 50,
     borderTopRightRadius: 50,
-    marginTop: -40,
+    marginTop: -100,
     paddingTop: 10
   },
   image: {
-    height: 350
+    height: 400
   },
   details: {
     flexDirection: "row",

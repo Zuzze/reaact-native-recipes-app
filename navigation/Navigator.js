@@ -35,7 +35,7 @@ const defaultStackNavOptions = {
   headerBackground: () => (
     <Image
       style={StyleSheet.absoluteFill}
-      source={require("../assets/img/blur.png")}
+      source={require("../assets/img/blur_beige.png")}
     />
   ),
 

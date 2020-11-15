@@ -38,12 +38,12 @@ const waterMelonSugarTheme = {
     textAlign: "center"
   },
   screen: {
-    backgroundColor: "#F1E6D6" // "#f9f9f9" // "#222222"
+    backgroundColor: "#111111" // "#fffbf5" //
   },
 
   titleFontFamily: "montserrat-bold",
   titleFontSize: 20,
-  titleFontColor: "#333333",
+  titleFontColor: "#fffbf5", //"#333333",
 
   fontFamily: "montserrat",
   fontSize: 16,
