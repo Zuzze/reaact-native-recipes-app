@@ -1,8 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { View, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 import { CATEGORIES } from "../data/mock-data";
 import ItemTileList from "../components/ItemTileList";
+import ThemeText from "../components/ThemeText";
+import Theme from "../constants/theme";
 
 /**
  * Screen to display all recipes in a specific category
@@ -16,6 +19,13 @@ const CategoryScreen = props => {
     item => item.categoryIds.indexOf(selectedCategory.id) >= 0
   );
 
+  if (categoryItems.length === 0) {
+    return (
+      <View style={styles.screen}>
+        <ThemeText>No recipes found with these filters</ThemeText>
+      </View>
+    );
+  }
   return (
     <ItemTileList listData={categoryItems} navigation={props.navigation} />
   );
@@ -33,5 +43,14 @@ CategoryScreen.navigationOptions = navigationData => {
 CategoryScreen.propTypes = {};
 
 CategoryScreen.defaultProps = {};
+
+const styles = StyleSheet.create({
+  screen: {
+    backgroundColor: Theme.background,
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  }
+});
 
 export default CategoryScreen;

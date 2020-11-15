@@ -1,5 +1,5 @@
 import { ITEMS } from "../../data/mock-data";
-import { TOGGLE_FAVORITE } from "../actions/items";
+import { TOGGLE_FAVORITE, SET_FILTERS } from "../actions/items";
 
 const initialState = {
   items: ITEMS,
@@ -26,6 +26,27 @@ const itemsReducer = (state = initialState, action) => {
           favoriteItems: state.favoriteItems.concat(itemToAdd)
         };
       }
+    case SET_FILTERS:
+      const appliedFilters = action.filters;
+      const filtered = state.items.filter(item => {
+        if (appliedFilters.glutenFree && !item.isGlutenFree) {
+          return false;
+        }
+        if (appliedFilters.lactoseFree && !item.isLactoseFree) {
+          return false;
+        }
+        if (appliedFilters.vegetarian && !item.isVegetarian) {
+          return false;
+        }
+        if (appliedFilters.vegan && !item.isVegan) {
+          return false;
+        }
+        return true;
+      });
+      return {
+        ...state,
+        filteredItems: filtered
+      };
     default:
       return state;
   }

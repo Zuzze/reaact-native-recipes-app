@@ -1,11 +1,13 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { View, Text, StyleSheet, Switch, Platform } from "react-native";
 import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import HeaderButton from "../components/HeaderButton";
 import Theme from "../constants/theme";
 import ThemeText from "../components/ThemeText";
 import ThemeTitleText from "../components/ThemeTitleText";
+import { setFilters } from "../store/actions/items";
 
 const FilterSwitch = props => {
   return (
@@ -29,6 +31,8 @@ const FiltersScreen = props => {
   const [isVegan, setIsVegan] = useState(false);
   const [isVegetarian, setIsVegetarian] = useState(false);
 
+  const dispatch = useDispatch();
+
   // trigger only when filters [isGlutenFree, isLactoseFree, isVegan, isVegetarian] change
   // useCallback() often is used in conjunction with useEffect() because it allows you to prevent the re-creation of a function.
   // By wrapping it around a function declaration and defining the dependencies of the function, it ensures that the function is only re-created if its dependencies changed.
@@ -37,9 +41,9 @@ const FiltersScreen = props => {
       glutenFree: isGlutenFree,
       lactoseFree: isLactoseFree,
       vegan: isVegan,
-      isVegetarian: isVegetarian
+      vegetarian: isVegetarian
     };
-
+    dispatch(setFilters(appliedFilters));
     console.log(appliedFilters);
   }, [isGlutenFree, isLactoseFree, isVegan, isVegetarian]);
 
