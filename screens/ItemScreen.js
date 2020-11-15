@@ -10,11 +10,13 @@ import ThemeText from "../components/ThemeText";
 import { toggleFavorite } from "../store/actions/items";
 import { Button, Snackbar } from "react-native-paper";
 import { Ionicons } from "@expo/vector-icons";
+import ThemeCheckbox from "../components/ThemeCheckbox";
 
 const ListItem = props => {
   return (
     <View style={styles.listItem}>
-      <ThemeText>{props.children}</ThemeText>
+      <ThemeCheckbox />
+      <ThemeText style={styles.listItemText}>{props.children}</ThemeText>
     </View>
   );
 };
@@ -191,12 +193,17 @@ const styles = StyleSheet.create({
     color: Theme.titleFontColorDark
   },
   listItem: {
+    flexDirection: "row",
+    alignItems: "center",
     marginVertical: 5,
     marginHorizontal: 20,
     borderColor: "#ccc",
     borderRadius: Theme.cardBorderRadius,
     borderWidth: 1,
     padding: 10
+  },
+  listItemText: {
+    marginLeft: 5
   },
   steps: {
     marginBottom: 20

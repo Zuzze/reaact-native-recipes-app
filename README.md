@@ -46,7 +46,7 @@ expo install react-native-gesture-handler react-native-reanimated react-native-s
 State navigation and state management
 
 ```
-yarn add @react-navigation/native react-navigation-stack react-navigation-tabs react-navigation-drawer react-navigation-header-buttons react-navigation-material-bottom-tabs react-native-paper react-native-vector-icons redux react-redux
+yarn add @react-navigation/native react-navigation-stack react-navigation-tabs react-navigation-drawer react-navigation-header-buttons react-navigation-material-bottom-tabs react-native-paper react-native-vector-icons redux react-redux @react-native-community/checkbox
 ```
 
 Optional dev tools

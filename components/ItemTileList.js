@@ -35,7 +35,7 @@ const ItemTileList = props => {
     <View style={styles.screen}>
       <FlatList
         data={props.listData}
-        contentContainerStyle={{ paddingBottom: 20, paddingTop: 100 }}
+        contentContainerStyle={{ paddingBottom: 20, paddingTop: 70 }}
         keyExtractor={(item, index) => item.id}
         renderItem={renderItem}
       />
