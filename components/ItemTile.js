@@ -7,7 +7,10 @@ import {
   ImageBackground
 } from "react-native";
 import Theme from "../constants/theme";
+import ThemeText from "./ThemeText";
+import ThemeTitleText from "./ThemeTitleText";
 
+/** A tile to display a preview of a single item */
 const ItemTile = props => {
   return (
     <View style={styles.item}>
@@ -19,20 +22,22 @@ const ItemTile = props => {
               style={styles.bgImage}
             >
               <View style={styles.titleContainer}>
-                <Text style={styles.title} numberOfLines={1}>
+                <ThemeTitleText style={styles.title} numberOfLines={1}>
                   {props.title}
-                </Text>
+                </ThemeTitleText>
               </View>
             </ImageBackground>
           </View>
           <View style={{ ...styles.itemRow, ...styles.itemFooter }}>
-            <Text style={styles.itemFooterText}>{props.duration}m</Text>
-            <Text style={styles.itemFooterText}>
+            <ThemeText style={styles.itemFooterText}>
+              {props.duration}m
+            </ThemeText>
+            <ThemeText style={styles.itemFooterText}>
               {props.complexity.toUpperCase()}
-            </Text>
-            <Text style={styles.itemFooterText}>
+            </ThemeText>
+            <ThemeText style={styles.itemFooterText}>
               {props.affordability.toUpperCase()}
-            </Text>
+            </ThemeText>
           </View>
         </View>
       </TouchableOpacity>
@@ -42,11 +47,11 @@ const ItemTile = props => {
 
 const styles = StyleSheet.create({
   item: {
+    ...Theme.shadow,
     height: 200,
     width: "100%",
     backgroundColor: "#f5f5f5",
     borderRadius: 10,
-    overflow: "hidden",
     marginBottom: 20
   },
   bgImage: {

@@ -13,8 +13,8 @@ import Navigator from "./navigation/Navigator";
 
 const fetchFonts = () => {
   Font.loadAsync({
-    "open-sans": require("./assets/fonts/OpenSans-Regular.ttf"),
-    "open-sans-bold": require("./assets/fonts/OpenSans-Bold.ttf")
+    montserrat: require("./assets/fonts/Montserrat-Regular.ttf"),
+    "montserrat-bold": require("./assets/fonts/Montserrat-Bold.ttf")
   });
 };
 

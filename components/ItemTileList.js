@@ -3,6 +3,7 @@ import { View, StyleSheet, FlatList } from "react-native";
 import Theme from "../constants/theme";
 import ItemTile from "./ItemTile";
 
+/** A list to display a grooup of items */
 const ItemTileList = props => {
   const renderItem = itemData => {
     return (

@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import PropTypes from "prop-types";
 import Theme from "../constants/theme";
+import ThemeTitleText from "./ThemeTitleText";
 
 /**
  * A touchable tile to display a category
@@ -18,19 +19,26 @@ import Theme from "../constants/theme";
 const CategoryGridTile = props => {
   let TouchableTile = TouchableOpacity;
 
-  if (Platform.OS === "android" && Platform.version >= 21) {
+  // note that Version is with capital V
+  if (Platform.OS === "android" && Platform.Version >= 21) {
     TouchableTile = TouchableNativeFeedback;
   }
 
   return (
     <View style={styles.gridItem}>
-      <TouchableTile style={{ flex: 1 }} onPress={props.onSelect}>
-        <View style={{ ...styles.tile, ...{ backgroundColor: Theme.accent } }}>
+      <TouchableTile
+        style={{ flex: 1 }}
+        onPress={props.onSelect}
+        background={TouchableNativeFeedback.Ripple(Theme.shadow, true)}
+      >
+        <View style={styles.tile}>
           <Image
             style={styles.gridImage}
             source={require("../assets/img/plate_watermelon.png")}
           />
-          <Text style={styles.gridTitle}>{props.title}</Text>
+          <ThemeTitleText style={styles.gridTitle}>
+            {props.title}
+          </ThemeTitleText>
         </View>
       </TouchableTile>
     </View>
@@ -51,35 +59,27 @@ CategoryGridTile.defaultProps = {
 
 const styles = StyleSheet.create({
   tile: {
-    borderRadius: Theme.borderRadius,
+    backgroundColor: Theme.card,
+    borderRadius: Theme.cardBorderRadius,
     flex: 1,
     justifyContent: "flex-end",
     alignItems: "flex-end",
     padding: 15,
     overflow:
-      Platform.OS === "android" && Platform.version >= 21
-        ? "hidden"
-        : "visible",
-    elevation: 5
+      Platform.OS === "android" && Platform.version >= 21 ? "hidden" : "visible"
   },
   gridItem: {
+    ...Theme.shadow,
     margin: 10,
     flex: 1,
     height: 150,
-    shadowColor: Theme.shadow,
-    shadowOpacity: 0.26,
-    shadowRadius: 10,
-    shadowOffset: { width: 0, height: 2 },
     textAlign: "center",
-    borderRadius: Theme.borderRadius
+    borderRadius: Theme.cardBorderRadius
   },
   gridImage: {
     width: "70%"
   },
   gridTitle: {
-    fontFamily: Theme.titleFontFamily,
-    color: Theme.fontColor,
-    fontSize: 20,
     textAlign: "right"
   }
 });

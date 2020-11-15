@@ -6,7 +6,7 @@ import { Ionicons } from "@expo/vector-icons";
 import Theme from "../constants/theme";
 
 /**
- * A touchable tile to display a category
+ * A Button to be displayed in header
  * @param {*} props
  */
 const CustomHeaderButton = props => {

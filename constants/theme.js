@@ -4,7 +4,14 @@ const waterMelonSugarTheme = {
   accent: "#e7ffea",
   danger: "#ffcdc8",
   success: "#e7ffea",
-  shadow: "gray",
+  shadow: {
+    elevation: 5,
+    overflow: "hidden",
+    shadowColor: "gray",
+    shadowOpacity: 0.26,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 2 }
+  },
   light: "white",
   dark: "#222222",
 
@@ -20,9 +27,12 @@ const waterMelonSugarTheme = {
   buttonBorderRadius: 20,
   buttonRipple: "lightgray",
 
-  titleFontFamily: "open-sans-bold",
-  fontFamily: "open-sans-regular",
-  titleFontColor: "gray",
+  titleFontFamily: "montserrat-bold",
+  titleFontSize: 20,
+  titleFontColor: "black",
+
+  fontFamily: "montserrat",
+  fontSize: 16,
   fontColor: "gray"
 };
 

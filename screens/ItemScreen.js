@@ -5,6 +5,7 @@ import { ITEMS } from "../data/mock-data";
 import Theme from "../constants/theme";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import HeaderButton from "../components/HeaderButton";
+import ThemeTitleText from "../components/ThemeTitleText";
 
 /**
  * Single recipe screen
@@ -16,7 +17,7 @@ const ItemScreen = props => {
 
   return (
     <View style={styles.screen}>
-      <Text>{selectedItem.title}</Text>
+      <ThemeTitleText>{selectedItem.title}</ThemeTitleText>
     </View>
   );
 };
