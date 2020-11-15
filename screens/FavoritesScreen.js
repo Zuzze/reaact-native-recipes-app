@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ItemTileList from "../components/ItemTileList";
-import { ITEMS } from "../data/mock-data";
+
+import { useSelector } from "react-redux";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import HeaderButton from "../components/HeaderButton";
 
@@ -10,11 +11,9 @@ import HeaderButton from "../components/HeaderButton";
  * @param {*} props
  */
 const FavoritesScreen = props => {
-  const favoriteMeals = ITEMS.filter(
-    item => item.id === "m1" || item.id === "m2"
-  );
+  const favoriteItems = useSelector(state => state.items.favoriteItems);
   return (
-    <ItemTileList listData={favoriteMeals} navigation={props.navigation} />
+    <ItemTileList listData={favoriteItems} navigation={props.navigation} />
   );
 };
 

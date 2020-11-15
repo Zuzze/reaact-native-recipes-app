@@ -3,13 +3,23 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
+import { createStore, combineReducers } from "redux";
+import { Provider } from "react-redux";
+
 // import { enableScreens } from "react-native-screens";
 
 import Navigator from "./navigation/Navigator";
+import itemsReducer from "./store/reducers/items";
 
 // enableScreens is a tool to improve performance using native Fragment (android) and UIViewController (iOS) screens
 // https://github.com/software-mansion/react-native-screens
 // enableScreens();
+
+// Redux setup
+const rootReducer = combineReducers({
+  items: itemsReducer
+});
+const store = createStore(rootReducer);
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -31,7 +41,11 @@ export default function App() {
     );
   }
 
-  return <Navigator />;
+  return (
+    <Provider store={store}>
+      <Navigator />
+    </Provider>
+  );
 }
 
 const styles = StyleSheet.create({});

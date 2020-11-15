@@ -1,9 +1,7 @@
 import React from "react";
-import { View, StyleSheet, Text, FlatList } from "react-native";
 import PropTypes from "prop-types";
-import { CATEGORIES, ITEMS } from "../data/mock-data";
-import ItemTile from "../components/ItemTile";
-import Theme from "../constants/theme";
+import { useSelector } from "react-redux";
+import { CATEGORIES } from "../data/mock-data";
 import ItemTileList from "../components/ItemTileList";
 
 /**
@@ -13,7 +11,8 @@ import ItemTileList from "../components/ItemTileList";
 const CategoryScreen = props => {
   const categoryId = props.navigation.getParam("categoryId");
   const selectedCategory = CATEGORIES.find(c => c.id === categoryId);
-  const categoryItems = ITEMS.filter(
+  const availableItems = useSelector(state => state.items.filteredItems);
+  const categoryItems = availableItems.filter(
     item => item.categoryIds.indexOf(selectedCategory.id) >= 0
   );
 

@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, StyleSheet, ScrollView, Image } from "react-native";
 import PropTypes from "prop-types";
-import { ITEMS } from "../data/mock-data";
+import { useSelector } from "react-redux";
 import Theme from "../constants/theme";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import HeaderButton from "../components/HeaderButton";
@@ -21,8 +21,13 @@ const ListItem = props => {
  * @param {*} props
  */
 const ItemScreen = props => {
+  const availableItems = useSelector(state => state.items.items);
   const ItemId = props.navigation.getParam("id");
-  const selectedItem = ITEMS.find(item => item.id === ItemId);
+  const selectedItem = availableItems.find(item => item.id === ItemId);
+
+  useEffect(() => {
+    props.navigation.setParams({ itemTitle: selectedItem.title });
+  }, [selectedItem]);
 
   return (
     <View style={styles.screen}>
@@ -48,10 +53,11 @@ const ItemScreen = props => {
   );
 };
 ItemScreen.navigationOptions = navigationData => {
-  const ItemId = navigationData.navigation.getParam("id");
-  const selectedItem = ITEMS.find(item => item.id === ItemId);
+  const itemId = navigationData.navigation.getParam("id");
+  const itemTitle = navigationData.navigation.getParam("itemTitle");
+
   return {
-    headerTitle: selectedItem.title,
+    headerTitle: itemTitle,
     headerRight: () => (
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
         <Item
