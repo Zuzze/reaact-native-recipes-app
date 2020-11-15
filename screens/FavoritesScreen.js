@@ -1,10 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ItemTileList from "../components/ItemTileList";
-
+import { View, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import HeaderButton from "../components/HeaderButton";
+import ThemeText from "../components/ThemeText";
+import ThemeTitleText from "../components/ThemeTitleText";
+import Theme from "../constants/theme";
 
 /**
  * Screen to display all reecipes that have been marked as favorites
@@ -12,6 +15,18 @@ import HeaderButton from "../components/HeaderButton";
  */
 const FavoritesScreen = props => {
   const favoriteItems = useSelector(state => state.items.favoriteItems);
+
+  if (!favoriteItems || favoriteItems.length === 0) {
+    return (
+      <View style={styles.screen}>
+        <ThemeTitleText>No favorites added</ThemeTitleText>
+        <ThemeText style={styles.text}>
+          Add recipes to your favorites by pressing star icon of the recipe you
+          want to save
+        </ThemeText>
+      </View>
+    );
+  }
   return (
     <ItemTileList listData={favoriteItems} navigation={props.navigation} />
   );
@@ -38,5 +53,18 @@ FavoritesScreen.navigationOptions = navData => {
 FavoritesScreen.propTypes = {};
 
 FavoritesScreen.defaultProps = {};
+
+const styles = StyleSheet.create({
+  screen: {
+    backgroundColor: Theme.background,
+    justifyContent: "center",
+    alignItems: "center",
+    flex: 1
+  },
+  text: {
+    textAlign: "center",
+    padding: 10
+  }
+});
 
 export default FavoritesScreen;

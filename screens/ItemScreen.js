@@ -24,6 +24,9 @@ const ListItem = props => {
 const ItemScreen = props => {
   const availableItems = useSelector(state => state.items.items);
   const itemId = props.navigation.getParam("id");
+  const isCurrentItemFavorite = useSelector(state =>
+    state.items.favoriteItems.some(item => item.id === itemId)
+  );
   const selectedItem = availableItems.find(item => item.id === itemId);
   const dispatch = useDispatch();
 
@@ -38,6 +41,10 @@ const ItemScreen = props => {
   useEffect(() => {
     props.navigation.setParams({ toggleFavorite: handleToggleFavorite });
   }, [handleToggleFavorite]);
+
+  useEffect(() => {
+    props.navigation.setParams({ isFavorite: isCurrentItemFavorite });
+  }, [isCurrentItemFavorite]);
 
   return (
     <View style={styles.screen}>
@@ -62,15 +69,24 @@ const ItemScreen = props => {
     </View>
   );
 };
+
+// You cannot communicate between navigation and redux directly
+// you need navigation params to communicate between redux <=> react useEffect <=> navigation params
+// if data is not set as parent props, there can be a delay
 ItemScreen.navigationOptions = navigationData => {
   const itemTitle = navigationData.navigation.getParam("itemTitle");
   const toggleFavorite = navigationData.navigation.getParam("toggleFavorite");
+  const isFavorite = navigationData.navigation.getParam("isFavorite");
 
   return {
     headerTitle: itemTitle,
     headerRight: () => (
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
-        <Item title="Favorite" iconName="ios-star" onPress={toggleFavorite} />
+        <Item
+          title="Favorite"
+          iconName={isFavorite ? "ios-star" : "ios-star-outline"}
+          onPress={toggleFavorite}
+        />
       </HeaderButtons>
     )
   };

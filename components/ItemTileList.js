@@ -2,10 +2,15 @@ import React from "react";
 import { View, StyleSheet, FlatList } from "react-native";
 import Theme from "../constants/theme";
 import ItemTile from "./ItemTile";
+import { useSelector } from "react-redux";
 
 /** A list to display a grooup of items */
 const ItemTileList = props => {
+  // you MUST use useSelector only on root level of the component
+  const favoriteItems = useSelector(state => state.items.favoriteItems);
+
   const renderItem = itemData => {
+    const isFavorite = favoriteItems.some(item => item.id === itemData.item.id);
     return (
       <ItemTile
         title={itemData.item.title}
@@ -16,7 +21,10 @@ const ItemTileList = props => {
         onSelectMeal={() => {
           props.navigation.navigate({
             routeName: "Recipe",
-            params: { id: itemData.item.id }
+            params: {
+              id: itemData.item.id,
+              isFavorite: isFavorite
+            }
           });
         }}
       />
