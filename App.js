@@ -1,10 +1,13 @@
 // import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
-import { createStore, combineReducers } from "redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
+
+// comment out in Production!!
+import { composeWithDevTools } from "redux-devtools-extension";
 
 // import { enableScreens } from "react-native-screens";
 
@@ -19,8 +22,13 @@ import itemsReducer from "./store/reducers/items";
 const rootReducer = combineReducers({
   items: itemsReducer
 });
-const store = createStore(rootReducer);
 
+let store = createStore(rootReducer);
+if (__DEV__) {
+  //  dev
+  console.log("Development mode active");
+  store = createStore(rootReducer, composeWithDevTools());
+}
 const fetchFonts = () => {
   return Font.loadAsync({
     montserrat: require("./assets/fonts/Montserrat-Regular.ttf"),
