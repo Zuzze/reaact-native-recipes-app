@@ -7,6 +7,7 @@ import CategoryGridTile from "../components/CategoryGridTile";
 import Theme from "../constants/theme";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import HeaderButton from "../components/HeaderButton";
+import ThemeTitleText from "../components/ThemeTitleText";
 
 /**
  * Screen to display recipe categories
@@ -67,10 +68,10 @@ const CategoriesScreen = props => {
   };
 
   return (
-    <View style={styles.screen}>
+    <View style={Theme.screen}>
       <FlatList
         style={styles.list}
-        contentContainerStyle={{ paddingBottom: 20 }}
+        contentContainerStyle={{ paddingBottom: 20, paddingTop: 80 }}
         keyExtractor={item => item.id}
         numColumns={2}
         data={CATEGORIES}
@@ -103,9 +104,6 @@ CategoriesScreen.navigationOptions = navData => {
 };
 
 const styles = StyleSheet.create({
-  screen: {
-    backgroundColor: Theme.background
-  },
   list: {
     padding: 10
   }

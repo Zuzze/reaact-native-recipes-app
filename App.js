@@ -2,17 +2,18 @@
 import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 import * as Font from "expo-font";
+import Navigator from "./navigation/Navigator";
+import itemsReducer from "./store/reducers/items";
 import { AppLoading } from "expo";
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
+import { Provider as PaperProvider } from "react-native-paper";
+import { PaperTheme } from "./constants/paper-config";
 
 // comment out in Production!!
 // import { composeWithDevTools } from "redux-devtools-extension";
 
 // import { enableScreens } from "react-native-screens";
-
-import Navigator from "./navigation/Navigator";
-import itemsReducer from "./store/reducers/items";
 
 // enableScreens is a tool to improve performance using native Fragment (android) and UIViewController (iOS) screens
 // https://github.com/software-mansion/react-native-screens
@@ -51,7 +52,9 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <Navigator />
+      <PaperProvider theme={PaperTheme}>
+        <Navigator />
+      </PaperProvider>
     </Provider>
   );
 }

@@ -9,6 +9,7 @@ import ThemeTitleText from "../components/ThemeTitleText";
 import ThemeText from "../components/ThemeText";
 import { toggleFavorite } from "../store/actions/items";
 import { Button, Snackbar } from "react-native-paper";
+import { Ionicons } from "@expo/vector-icons";
 
 const ListItem = props => {
   return (
@@ -56,20 +57,53 @@ const ItemScreen = props => {
     <View style={styles.screen}>
       <ScrollView>
         <Image source={{ uri: selectedItem.imageUrl }} style={styles.image} />
-        <View style={styles.details}>
-          <ThemeText>{selectedItem.duration}m</ThemeText>
-          <ThemeText>{selectedItem.complexity.toUpperCase()}</ThemeText>
-          <ThemeText>{selectedItem.affordability.toUpperCase()}</ThemeText>
-        </View>
-        <ThemeTitleText style={styles.title}>Ingredients</ThemeTitleText>
-        {selectedItem.ingredients.map(ingredient => (
-          <ListItem key={ingredient}>{ingredient}</ListItem>
-        ))}
-        <ThemeTitleText style={styles.title}>Steps</ThemeTitleText>
-        <View style={styles.steps}>
-          {selectedItem.steps.map(step => (
-            <ListItem key={step}>{step}</ListItem>
+        <View style={styles.card}>
+          <View style={styles.details}>
+            <View>
+              <Ionicons
+                style={styles.badgeTitle}
+                name="md-stopwatch"
+                size={22}
+              />
+              <ThemeText style={styles.badgeTitle}>Duration</ThemeText>
+              <ThemeText style={styles.badge}>
+                {selectedItem.duration} min
+              </ThemeText>
+            </View>
+
+            <View>
+              <Ionicons style={styles.badgeTitle} name="md-podium" size={22} />
+              <ThemeText style={styles.badgeTitle}>Difficulty</ThemeText>
+              <ThemeText style={styles.badge}>
+                {selectedItem.complexity}
+              </ThemeText>
+            </View>
+
+            <View>
+              <Ionicons style={styles.badgeTitle} name="md-cash" size={22} />
+              <ThemeText style={styles.badgeTitle}>Cost</ThemeText>
+              <ThemeText style={styles.badge}>
+                {selectedItem.affordability}
+              </ThemeText>
+            </View>
+          </View>
+          <ThemeTitleText style={styles.title}>Ingredients</ThemeTitleText>
+          {selectedItem.ingredients.map(ingredient => (
+            <ListItem key={ingredient}>{ingredient}</ListItem>
           ))}
+          <ThemeTitleText style={styles.title}>
+            <Ionicons
+              name="ios-restaurant"
+              size={22}
+              style={styles.titleIcon}
+            />{" "}
+            Steps
+          </ThemeTitleText>
+          <View style={styles.steps}>
+            {selectedItem.steps.map(step => (
+              <ListItem key={step}>{step}</ListItem>
+            ))}
+          </View>
         </View>
       </ScrollView>
       <Snackbar
@@ -125,18 +159,24 @@ ItemScreen.navigationOptions = navigationData => {
   };
 };
 
-ItemScreen.propTypes = {};
-
-ItemScreen.defaultProps = {};
+ItemScreen.propTypes = {
+  navigation: PropTypes.object
+};
 
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
     backgroundColor: Theme.background
   },
+  card: {
+    backgroundColor: Theme.card,
+    borderTopLeftRadius: 50,
+    borderTopRightRadius: 50,
+    marginTop: -40,
+    paddingTop: 10
+  },
   image: {
-    width: "100%",
-    height: 200
+    height: 350
   },
   details: {
     flexDirection: "row",
@@ -158,7 +198,26 @@ const styles = StyleSheet.create({
   },
   steps: {
     marginBottom: 20
+  },
+  badge: {
+    ...Theme.badge,
+    fontFamily: Theme.titleFontFamily
+  },
+  badgeTitle: {
+    textAlign: "center",
+    marginBottom: 5
+  },
+  titleIcon: {
+    paddingRight: 10
   }
 });
 
 export default ItemScreen;
+
+/**
+ <Ionicons
+  name="ios-basket"
+  size={22}
+  style={styles.titleIcon}
+/>
+ */

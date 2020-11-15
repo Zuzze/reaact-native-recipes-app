@@ -32,9 +32,11 @@ const ItemTileList = props => {
   };
 
   return (
-    <View style={styles.screen}>
+    <View style={Theme.screen}>
       <FlatList
         data={props.listData}
+        style={styles.list}
+        contentContainerStyle={{ paddingBottom: 20, paddingTop: 130 }}
         keyExtractor={(item, index) => item.id}
         renderItem={renderItem}
       />
@@ -42,14 +44,6 @@ const ItemTileList = props => {
   );
 };
 
-const styles = StyleSheet.create({
-  screen: {
-    backgroundColor: Theme.background,
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 15
-  }
-});
+const styles = StyleSheet.create({});
 
 export default ItemTileList;

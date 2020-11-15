@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     ...Theme.shadow,
     margin: 10,
     flex: 1,
-    height: 150,
+    height: 250,
     textAlign: "center",
     borderRadius: Theme.cardBorderRadius
   },

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ItemTileList from "../components/ItemTileList";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
 import { useSelector } from "react-redux";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import HeaderButton from "../components/HeaderButton";
@@ -18,7 +18,14 @@ const FavoritesScreen = props => {
 
   if (!favoriteItems || favoriteItems.length === 0) {
     return (
-      <View style={styles.screen}>
+      <View style={{ ...Theme.screen, ...styles.screen }}>
+        <Image
+          style={styles.emptyFavorites}
+          source={{
+            uri:
+              "https://cdn.pixabay.com/photo/2014/12/11/02/55/cereals-563796_1280.jpg"
+          }}
+        />
         <ThemeTitleText>No favorites added</ThemeTitleText>
         <ThemeText style={styles.text}>
           Add recipes to your favorites by pressing star icon of the recipe you
@@ -55,15 +62,21 @@ FavoritesScreen.propTypes = {};
 FavoritesScreen.defaultProps = {};
 
 const styles = StyleSheet.create({
-  screen: {
-    backgroundColor: Theme.background,
-    justifyContent: "center",
-    alignItems: "center",
-    flex: 1
-  },
   text: {
     textAlign: "center",
     padding: 10
+  },
+  emptyFavorites: {
+    height: 150,
+    width: 150,
+    justifyContent: "center",
+    borderRadius: 75,
+    marginBottom: 30
+  },
+  screen: {
+    justifyContent: "center",
+    alignItems: "center",
+    flex: 1
   }
 });
 

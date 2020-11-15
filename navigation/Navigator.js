@@ -28,16 +28,16 @@ const defaultStackNavOptions = {
   // initialRouteName: "Categories", // first pair is default
   // mode: "modal", // card (default)
   // set up global nav style here
-  headerStyle: {
+  /*headerStyle: {
     backgroundColor: Platform.OS === "android" ? Theme.header : Theme.background
-  },
-  // headerTransparent: true,
-  /*headerBackground: () => (
+  },*/
+  headerTransparent: true,
+  headerBackground: () => (
     <Image
       style={StyleSheet.absoluteFill}
-      source={require("../assets/img/green.png")}
+      source={require("../assets/img/blur.png")}
     />
-  ),*/
+  ),
 
   headerTintColor: Platform.OS === "android" ? Theme.background : Theme.primary,
   // Header text
@@ -82,7 +82,7 @@ const bottomTabConfig = {
           <Ionicons name="ios-restaurant" size={25} color={tabInfo.tintColor} />
         );
       },
-      tabBarColor: Theme.primary // android
+      tabBarColor: Theme.dark // android
     },
     tabBarLabel:
       Platform.OS === "android" ? (
@@ -97,7 +97,7 @@ const bottomTabConfig = {
       tabBarIcon: tabInfo => {
         return <Ionicons name="ios-star" size={25} color={tabInfo.tintColor} />;
       },
-      tabBarColor: Theme.primary // android
+      tabBarColor: Theme.dark // android
     },
     tabBarLabel:
       Platform.OS === "android" ? (
@@ -117,7 +117,7 @@ const TabNavigator =
         inactiveColor: Theme.inactiveColor,
         shifting: true, // animated effect for android transition
         barStyle: {
-          backgroundColor: Theme.primary
+          backgroundColor: Theme.dark
         }
       })
     : createBottomTabNavigator(bottomTabConfig, {

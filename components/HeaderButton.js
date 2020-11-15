@@ -13,6 +13,7 @@ const CustomHeaderButton = props => {
   return (
     <HeaderButton
       {...props}
+      style={{ ...props.style, ...styles.headerButton }}
       IconComponent={Ionicons}
       iconSize={23}
       color={Platform.OS === "android" ? Theme.headerText : Theme.header}
@@ -32,6 +33,10 @@ CustomHeaderButton.defaultProps = {
   title: "Category Name"
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  headerButton: {
+    marginLeft: 10
+  }
+});
 
 export default CustomHeaderButton;

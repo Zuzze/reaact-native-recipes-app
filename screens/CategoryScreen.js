@@ -21,7 +21,7 @@ const CategoryScreen = props => {
 
   if (categoryItems.length === 0) {
     return (
-      <View style={styles.screen}>
+      <View style={{ ...Theme.screen, ...styles.screen }}>
         <ThemeText>No recipes found with these filters</ThemeText>
       </View>
     );
@@ -40,13 +40,13 @@ CategoryScreen.navigationOptions = navigationData => {
   };
 };
 
-CategoryScreen.propTypes = {};
-
-CategoryScreen.defaultProps = {};
+CategoryScreen.propTypes = {
+  navigation: PropTypes.object
+};
 
 const styles = StyleSheet.create({
   screen: {
-    backgroundColor: Theme.background,
+    paddingTop: 60,
     flex: 1,
     justifyContent: "center",
     alignItems: "center"

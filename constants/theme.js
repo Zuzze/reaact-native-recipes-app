@@ -27,10 +27,23 @@ const waterMelonSugarTheme = {
   buttonText: "white",
   buttonBorderRadius: 20,
   buttonRipple: "lightgray",
+  badge: {
+    borderRadius: 0,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    borderColor: "lightgray",
+    // borderWidth: 1,
+    color: "gray",
+    minWidth: 70,
+    textAlign: "center"
+  },
+  screen: {
+    backgroundColor: "#F1E6D6" // "#f9f9f9" // "#222222"
+  },
 
   titleFontFamily: "montserrat-bold",
   titleFontSize: 20,
-  titleFontColor: "gray",
+  titleFontColor: "#333333",
 
   fontFamily: "montserrat",
   fontSize: 16,

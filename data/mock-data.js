@@ -3,12 +3,12 @@ import Item from "../models/item";
 
 export const CATEGORIES = [
   new Category("c1", "Italian", "#f5428d"),
-  new Category("c2", "Quick & Easy", "#f54242"),
-  new Category("c3", "Hamburgers", "#f5a442"),
-  new Category("c4", "German", "#f5d142"),
+  new Category("c3", "American", "#f5a442"),
   new Category("c5", "Light", "#368dff"),
-  new Category("c6", "Exotic", "#41d95d"),
+  new Category("c4", "Dinner party", "#f5d142"),
   new Category("c7", "Breakfast", "#9eecff"),
+  new Category("c6", "Exotic", "#41d95d"),
+  new Category("c2", "Quick & Easy", "#f54242"),
   new Category("c8", "Asian", "#b9ffb0"),
   new Category("c9", "French", "#ffc7ff"),
   new Category("c10", "Summer", "#47fced")
@@ -19,8 +19,8 @@ export const ITEMS = [
     "m1",
     ["c1"],
     "Spaghetti with Tomato Sauce",
-    "affordable",
-    "simple",
+    "$",
+    "Easy",
     "https://cdn.pixabay.com/photo/2020/10/22/05/36/pasta-5674971_1280.jpg",
     20,
     [
@@ -50,8 +50,8 @@ export const ITEMS = [
     "m2",
     ["c2"],
     "Toast Hawaii",
-    "affordable",
-    "simple",
+    "$",
+    "Easy",
     "https://cdn.pixabay.com/photo/2018/07/11/21/51/toast-3532016_1280.jpg",
     10,
     [
@@ -76,8 +76,8 @@ export const ITEMS = [
     "m3",
     ["c3"],
     "Classic Hamburger",
-    "pricey",
-    "simple",
+    "$$",
+    "Easy",
     "https://cdn.pixabay.com/photo/2014/10/19/20/59/hamburger-494706_1280.jpg",
     45,
     [
@@ -92,7 +92,7 @@ export const ITEMS = [
       "Form 2 patties",
       "Fry the patties for c. 4 minutes on each side",
       "Quickly fry the buns for c. 1 minute on each side",
-      "Bruch buns with ketchup",
+      "Add ketchup to buns",
       "Serve burger with tomato, cucumber and onion"
     ],
     false,
@@ -105,8 +105,8 @@ export const ITEMS = [
     "m4",
     ["c4"],
     "Wiener Schnitzel",
-    "luxurious",
-    "challenging",
+    "$$$",
+    "Medium",
     "https://cdn.pixabay.com/photo/2019/03/25/20/20/schnitzel-4081269_1280.jpg",
     60,
     [
@@ -137,10 +137,10 @@ export const ITEMS = [
   new Item(
     "m5",
     ["c2", "c10"],
-    "Salad with Smoked Salmon",
-    "luxurious",
-    "simple",
-    "https://cdn.pixabay.com/photo/2018/11/16/18/00/salmon-3819966_1280.jpg",
+    "Salmon Salad",
+    "$$$",
+    "Easy",
+    "https://cdn.pixabay.com/photo/2016/04/06/17/45/salmon-1312372_1280.jpg",
     15,
     [
       "Arugula",
@@ -169,9 +169,9 @@ export const ITEMS = [
   new Item(
     "m6",
     ["c6", "c10"],
-    "Delicious Orange Mousse",
-    "affordable",
-    "hard",
+    "Orange Mousse",
+    "$",
+    "Hard",
     "https://cdn.pixabay.com/photo/2017/05/01/05/18/pastry-2274750_1280.jpg",
     240,
     [
@@ -203,8 +203,8 @@ export const ITEMS = [
     "m7",
     ["c7"],
     "Pancakes",
-    "affordable",
-    "simple",
+    "$",
+    "Easy",
     "https://cdn.pixabay.com/photo/2019/08/16/16/16/pancakes-4410605_1280.jpg",
     20,
     [
@@ -232,8 +232,8 @@ export const ITEMS = [
     "m8",
     ["c8"],
     "Creamy Indian Chicken Curry",
-    "pricey",
-    "challenging",
+    "$$",
+    "Medium",
     "https://cdn.pixabay.com/photo/2018/06/18/16/05/indian-food-3482749_1280.jpg",
     35,
     [
@@ -263,8 +263,8 @@ export const ITEMS = [
     "m9",
     ["c9"],
     "Chocolate Souffle",
-    "affordable",
-    "hard",
+    "$",
+    "Hard",
     "https://cdn.pixabay.com/photo/2017/07/31/16/00/cake-2558610_1280.jpg",
     45,
     [
@@ -308,9 +308,9 @@ export const ITEMS = [
   new Item(
     "m10",
     ["c2", "c5", "c10"],
-    "Asparagus Salad with Cherry Tomatoes",
-    "luxurious",
-    "simple",
+    "Asparagus Tomato Salad",
+    "$$$",
+    "Easy",
     "https://cdn.pixabay.com/photo/2018/04/09/18/26/asparagus-3304997_1280.jpg",
     30,
     [
