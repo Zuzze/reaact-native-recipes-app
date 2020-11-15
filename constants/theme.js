@@ -3,7 +3,7 @@ const waterMelonSugarTheme = {
   primary: "#ff7676",
   accent: "#e7ffea",
   danger: "#ffcdc8",
-  success: "#e7ffea",
+  success: "#85BE8C",
   shadow: {
     elevation: 5,
     overflow: "hidden",
@@ -16,8 +16,9 @@ const waterMelonSugarTheme = {
   dark: "#222222",
 
   header: "#ff7676",
+  inactiveColor: "rgba(255, 255, 255, 0.6)",
   headerText: "white",
-  background: "#FFF9F0",
+  background: "#f9f9f9", //#FFF9F0
 
   input: "white",
   card: "white",

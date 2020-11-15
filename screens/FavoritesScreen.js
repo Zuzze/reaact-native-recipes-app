@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import ItemTileList from "../components/ItemTileList";
 import { ITEMS } from "../data/mock-data";
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import HeaderButton from "../components/HeaderButton";
 
 /**
  * Screen to display all reecipes that have been marked as favorites
@@ -16,8 +18,22 @@ const FavoritesScreen = props => {
   );
 };
 
-FavoritesScreen.navigationOptions = {
-  headerTitle: "Your favorites"
+FavoritesScreen.navigationOptions = navData => {
+  // see header style documentation at https://reactnavigation.org/docs/headers/
+  return {
+    headerTitle: "Your Favorites",
+    headerLeft: () => (
+      <HeaderButtons HeaderButtonComponent={HeaderButton}>
+        <Item
+          title="Menu"
+          iconName="ios-menu"
+          onPress={() => {
+            navData.navigation.toggleDrawer();
+          }}
+        />
+      </HeaderButtons>
+    )
+  };
 };
 
 FavoritesScreen.propTypes = {};

@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
     padding: 15,
     overflow:
-      Platform.OS === "android" && Platform.version >= 21 ? "hidden" : "visible"
+      Platform.OS === "android" && Platform.Version >= 21 ? "hidden" : "visible"
   },
   gridItem: {
     ...Theme.shadow,

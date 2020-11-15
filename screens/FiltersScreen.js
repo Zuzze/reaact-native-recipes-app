@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { View, Text, StyleSheet, Switch, Platform } from "react-native";
 import PropTypes from "prop-types";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
@@ -12,8 +12,8 @@ const FilterSwitch = props => {
     <View style={styles.filterContainer}>
       <ThemeText>{props.label}</ThemeText>
       <Switch
-        trackColor={{ true: Theme.primary }}
-        thumbColor={Platform.OS === "android" ? Theme.primary : ""}
+        trackColor={{ true: Theme.success, false: Theme.danger }}
+        thumbColor={Theme.light}
         value={props.state}
         onValueChange={props.onChange}
       />
@@ -77,7 +77,7 @@ const FiltersScreen = props => {
 FiltersScreen.navigationOptions = navData => {
   return {
     headerTitle: "Filter",
-    headerLeft: (
+    headerLeft: () => (
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
         <Item
           title="Menu"
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   title: {
-    fontFamily: "open-sans-bold",
+    fontFamily: Theme.titleFontFamily,
     fontSize: 22,
     margin: 20,
     textAlign: "center"

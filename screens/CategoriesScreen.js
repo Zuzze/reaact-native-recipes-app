@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import { CATEGORIES } from "../data/mock-data";
 import CategoryGridTile from "../components/CategoryGridTile";
 import Theme from "../constants/theme";
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import HeaderButton from "../components/HeaderButton";
 
 /**
  * Screen to display recipe categories
@@ -44,9 +46,22 @@ CategoriesScreen.propTypes = {};
 
 CategoriesScreen.defaultProps = {};
 
-CategoriesScreen.navigationOptions = {
+CategoriesScreen.navigationOptions = navData => {
   // see header style documentation at https://reactnavigation.org/docs/headers/
-  headerTitle: "Categories"
+  return {
+    headerTitle: "Categories",
+    headerLeft: () => (
+      <HeaderButtons HeaderButtonComponent={HeaderButton}>
+        <Item
+          title="Menu"
+          iconName="ios-menu"
+          onPress={() => {
+            navData.navigation.toggleDrawer();
+          }}
+        />
+      </HeaderButtons>
+    )
+  };
 };
 
 const styles = StyleSheet.create({
