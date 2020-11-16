@@ -203,7 +203,8 @@ const styles = StyleSheet.create({
     padding: 10
   },
   listItemText: {
-    marginLeft: 5
+    marginLeft: 5,
+    paddingRight: 30
   },
   steps: {
     marginBottom: 20

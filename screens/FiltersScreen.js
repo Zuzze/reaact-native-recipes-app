@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react";
-import { View, Text, StyleSheet, Switch, Platform } from "react-native";
+import { View, Text, StyleSheet, Switch, Platform, Image } from "react-native";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
@@ -58,29 +58,36 @@ const FiltersScreen = props => {
 
   return (
     <View style={styles.screen}>
-      <ThemeTitleText style={styles.title}>
-        Available Filters / Restrictions
-      </ThemeTitleText>
-      <FilterSwitch
-        label="Gluten-free"
-        state={isGlutenFree}
-        onChange={newValue => setIsGlutenFree(newValue)}
+      <Image
+        style={styles.image}
+        source={{
+          uri:
+            "https://cdn.pixabay.com/photo/2020/11/04/15/28/coffee-5712773_1280.jpg"
+        }}
       />
-      <FilterSwitch
-        label="Lactose-free"
-        state={isLactoseFree}
-        onChange={newValue => setIsLactoseFree(newValue)}
-      />
-      <FilterSwitch
-        label="Vegan"
-        state={isVegan}
-        onChange={newValue => setIsVegan(newValue)}
-      />
-      <FilterSwitch
-        label="Vegetarian"
-        state={isVegetarian}
-        onChange={newValue => setIsVegetarian(newValue)}
-      />
+      <View style={styles.content}>
+        <ThemeTitleText style={styles.title}>Filter recipes</ThemeTitleText>
+        <FilterSwitch
+          label="Gluten-free"
+          state={isGlutenFree}
+          onChange={newValue => setIsGlutenFree(newValue)}
+        />
+        <FilterSwitch
+          label="Lactose-free"
+          state={isLactoseFree}
+          onChange={newValue => setIsLactoseFree(newValue)}
+        />
+        <FilterSwitch
+          label="Vegan"
+          state={isVegan}
+          onChange={newValue => setIsVegan(newValue)}
+        />
+        <FilterSwitch
+          label="Vegetarian"
+          state={isVegetarian}
+          onChange={newValue => setIsVegetarian(newValue)}
+        />
+      </View>
     </View>
   );
 };
@@ -103,7 +110,7 @@ FiltersScreen.navigationOptions = navData => {
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
         <Item
           title="Save"
-          iconName="ios-save"
+          iconName="ios-checkmark-circle"
           onPress={navData.navigation.getParam("save")}
         />
       </HeaderButtons>
@@ -117,14 +124,25 @@ FiltersScreen.defaultProps = {};
 
 const styles = StyleSheet.create({
   screen: {
+    paddingTop: 30,
     flex: 1,
     alignItems: "center",
     backgroundColor: Theme.background
   },
+  content: {
+    alignItems: "center",
+    width: "100%",
+    backgroundColor: Theme.background,
+    borderTopLeftRadius: 50,
+    borderTopRightRadius: 50,
+    marginTop: -100
+  },
   title: {
     fontFamily: Theme.titleFontFamily,
+    color: Theme.dark,
     fontSize: 22,
-    margin: 20,
+    marginTop: 40,
+    marginBottom: 30,
     textAlign: "center"
   },
   filterContainer: {
@@ -132,7 +150,18 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     width: "80%",
-    marginVertical: 15
+    marginVertical: 5,
+    ...Theme.shadow,
+    backgroundColor: Theme.background,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: Theme.cardBorderRadius
+  },
+  image: {
+    height: 300,
+    width: "100%",
+    justifyContent: "center",
+    marginBottom: 30
   }
 });
 

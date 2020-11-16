@@ -26,7 +26,9 @@ const FavoritesScreen = props => {
               "https://cdn.pixabay.com/photo/2014/12/11/02/55/cereals-563796_1280.jpg"
           }}
         />
-        <ThemeTitleText>No favorites added</ThemeTitleText>
+        <ThemeTitleText style={{ color: Theme.dark }}>
+          No favorites added
+        </ThemeTitleText>
         <ThemeText style={styles.text}>
           Add recipes to your favorites by pressing star icon of the recipe you
           want to save
@@ -64,7 +66,8 @@ FavoritesScreen.defaultProps = {};
 const styles = StyleSheet.create({
   text: {
     textAlign: "center",
-    padding: 10
+    paddingHorizontal: 30,
+    paddingVertical: 15
   },
   emptyFavorites: {
     height: 150,

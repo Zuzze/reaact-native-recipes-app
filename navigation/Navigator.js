@@ -34,7 +34,7 @@ const defaultStackNavOptions = {
   headerTransparent: true,
   headerBackground: () => (
     <Image
-      style={StyleSheet.absoluteFill}
+      style={{ width: "100%" }}
       source={require("../assets/img/blur_beige.png")}
     />
   ),
@@ -157,7 +157,14 @@ const MainNavigator = createDrawerNavigator(
   },
   {
     contentOptions: {
+      title: "Filters",
+      style: {
+        backgroundColor: Theme.dark
+      },
+      headerStyle: { backgroundColor: Theme.primary },
+      drawerStyle: { width: "100%" },
       activeTintColor: Theme.primary,
+      inactiveColor: Theme.fontColor,
       labelStyle: {
         fontFamily: Theme.fontFamily
       }

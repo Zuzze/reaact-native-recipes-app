@@ -35,7 +35,7 @@ const ItemTileList = props => {
     <View style={styles.screen}>
       <FlatList
         data={props.listData}
-        contentContainerStyle={{ paddingBottom: 20, paddingTop: 70 }}
+        contentContainerStyle={{ paddingBottom: 20, paddingTop: 90 }}
         keyExtractor={(item, index) => item.id}
         renderItem={renderItem}
       />
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    padding: 15
+    paddingHorizontal: 15
   }
 });
 

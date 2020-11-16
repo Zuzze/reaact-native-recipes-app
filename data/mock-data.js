@@ -43,16 +43,53 @@ export const ITEMS = [
     false,
     true,
     true,
-    true
+    false
   ),
 
   new Item(
-    "m11",
+    "m15",
     ["c1"],
-    "Creamy Shrimp Pasta",
-    "$$",
-    "Easy",
+    "Creamy Shrimp pasta",
+    "$$$",
+    "Medium",
     "https://cdn.pixabay.com/photo/2018/07/18/19/12/spaghetti-3547078_1280.jpg",
+    20,
+    [
+      "3/4 lb pasta",
+      "1 lb large raw shrimp peeled and deveined",
+      "1 Tablespoon of Olive Oil",
+      "1 Onion",
+      "2 Tbsp unsalted butter",
+      "Spices",
+      "1 garlic clove minced",
+      "2 cups whipping cream",
+      "1/3 cup shredded parmesan cheese",
+      "1/2 tsp Sea salt or to taste",
+      "1/4 tsp black pepper or to taste"
+    ],
+    [
+      "Add 3/4 lb pasta to a pot of boiling water with 1 Tbsp salt and cook according to package instructions until al-dente. Drain without rinsing and set aside.",
+      "Season shrimp with 1/2 tsp salt, 1/4 tsp black pepper and 1/4 tsp paprika. ",
+      "Put the spaghetti into the boiling water - they should be done in about 10 to 12 minutes.",
+      " Place a large, non-stick pan over medium/high heat and add 1 Tbsp oil. Once oil is hot, add shrimp in a single layer and cook 2 min per side or just until cooked through and no longer translucent. ",
+      "After 2 minutes, add the tomato pieces, salt, pepper and your other spices.",
+      "add 2 Tbsp butter with finely chopped onion and sauté until soft and golden (3-5 mins), stirring often",
+      "Stir in 2 cups cream, bring to a light boil then simmer 2 min",
+      "Serve in warm pasta bowls with a generous sprinkle of finely chopped parsley, more parmesan cheese and some freshly cracked black pepper."
+    ],
+    false,
+    false,
+    false,
+    false
+  ),
+
+  new Item(
+    "m14",
+    ["c1"],
+    "Vegeterian Pizza",
+    "$",
+    "Easy",
+    "https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_1280.jpg",
     20,
     [
       "3/4 lb pasta",
@@ -139,13 +176,13 @@ export const ITEMS = [
   ),
 
   new Item(
-    "m3",
+    "m12",
     ["c3"],
     "Veggie Hamburger",
     "$$",
     "Easy",
     "https://cdn.pixabay.com/photo/2018/10/14/13/20/burger-3746476_1280.jpg",
-    45,
+    60,
     [
       "300g Planted",
       "1 Tomato",

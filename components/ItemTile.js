@@ -101,6 +101,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     height: "15%",
+    marginBottom: -3,
     color: "white",
     alignItems: "center"
     // backgroundColor: "rgba(255,255,255,0.8)"

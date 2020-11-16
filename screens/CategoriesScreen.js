@@ -71,7 +71,7 @@ const CategoriesScreen = props => {
     <View style={Theme.screen}>
       <FlatList
         style={styles.list}
-        contentContainerStyle={{ paddingBottom: 20, paddingTop: 80 }}
+        contentContainerStyle={{ paddingBottom: 20, paddingTop: 100 }}
         keyExtractor={item => item.id}
         numColumns={2}
         data={CATEGORIES}

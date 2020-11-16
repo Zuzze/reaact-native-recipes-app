@@ -22,8 +22,8 @@ const ThemeCheckbox = props => {
   );
 };
 
-ThemeCheckbox.PropTypes = {
-  style: Object
+ThemeCheckbox.propTypes = {
+  style: PropTypes.object
 };
 
 ThemeCheckbox.defaultProps = {

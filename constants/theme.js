@@ -38,7 +38,7 @@ const waterMelonSugarTheme = {
     textAlign: "center"
   },
   screen: {
-    backgroundColor: "#111111" // "#fffbf5" //
+    backgroundColor: "#fffbf5" // "#111111"
   },
 
   titleFontFamily: "montserrat-bold",
